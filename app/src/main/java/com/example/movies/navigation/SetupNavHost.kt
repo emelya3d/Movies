@@ -16,6 +16,7 @@ sealed class Screens(val route: String) {
 
 @Composable
 fun SetupNavHost(navController: NavHostController) {
+
     NavHost(
         navController = navController,
         startDestination = Screens.Splash.route
@@ -32,3 +33,5 @@ fun SetupNavHost(navController: NavHostController) {
     }
 
 }
+//2. создали sealed class Screens в новом пакете navigation
+//3. потом fun SetupNavHost
