@@ -33,5 +33,6 @@ fun SetupNavHost(navController: NavHostController) {
     }
 
 }
-//2. создали sealed class Screens в новом пакете navigation
-//3. потом fun SetupNavHost
+//3. создали sealed class Screens в новом пакете navigation
+//4.  fun SetupNavHost
+//5.  composable функции.
