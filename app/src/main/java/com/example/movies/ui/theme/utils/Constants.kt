@@ -7,4 +7,4 @@ class Constants {
         const val DETAILS_SCREEN = "details_screen"
     }
 }
-//4.добавили константы.
+//4. добавили константы.
