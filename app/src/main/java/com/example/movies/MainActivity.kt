@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import com.example.movies.navigation.SetupNavHost
 import com.example.movies.ui.theme.MoviesTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,6 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MoviesTheme {
                 val navController = rememberNavController()
+                SetupNavHost(navController=navController)
             }
         }
     }
