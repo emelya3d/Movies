@@ -19,7 +19,7 @@ sealed class Screens(val route: String) {
 }
 
 @Composable
-fun SetupNavHost(navController:NavHostController) {
+fun SetupNavHost(navController: NavHostController) {
 
     NavHost(
         navController = navController,

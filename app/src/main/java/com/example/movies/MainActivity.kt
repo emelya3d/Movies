@@ -26,3 +26,4 @@ class MainActivity : ComponentActivity() {
     }
 }
 //1. Почистили и добавили val navController = rememberNavController()
+//    Вызываем SetupNavHost(navController=navController)
