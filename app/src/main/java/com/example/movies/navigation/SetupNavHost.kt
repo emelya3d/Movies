@@ -1,9 +1,6 @@
 package com.example.movies.navigation
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.unit.Constraints
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -12,14 +9,14 @@ import com.example.movies.screens.SplashScreen
 import com.example.movies.ui.theme.utils.Constants
 
 
-sealed class Screens(val route: String) {
+sealed class Screens(val route: String) {       // может в отдельный package??
     object Splash : Screens(route = Constants.Screens.SPLASH_SCREEN)
     object Main : Screens(route = Constants.Screens.MAIN_SCREEN)
     object Details : Screens(route = Constants.Screens.DETAILS_SCREEN)
 }
 
 @Composable
-fun SetupNavHost(navController: NavHostController) {
+fun SetupNavHost(navController: NavHostController) { //может проще сразу просто NavHost?
 
     NavHost(
         navController = navController,
@@ -30,7 +27,7 @@ fun SetupNavHost(navController: NavHostController) {
 
         }
         composable(route = Screens.Main.route) {
-            MainScreen()
+            MainScreen(navController = navController)
         }
         composable(route = Screens.Details.route) {
 

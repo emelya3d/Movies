@@ -1,7 +1,6 @@
 package com.example.movies.screens
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ElevatedCard
@@ -14,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
 @Composable
-fun MainScreen() {
+fun MainScreen(navController: NavController) {
 
     ElevatedCard()
 }
@@ -22,22 +21,28 @@ fun MainScreen() {
 @Composable
 fun ElevatedCard() {
 
-        ElevatedCard(Modifier.size(width = 180.dp, height = 100.dp)
+    ElevatedCard(
 
-              ) {
-            Box(Modifier.fillMaxSize()) {
-                Text("Card content", Modifier.align(Alignment.Center))
-    }
+        Modifier.size(
+            width = 280.dp,
+            height = 200.dp,
 
+
+        )
+
+    ) {
+        Box(Modifier.fillMaxSize()) {
+            Text("Card content", Modifier.align(Alignment.Center))
         }
-    }
 
+    }
+}
 
 
 @Preview
 @Composable
 fun ElevatedCardSample() {
-    ElevatedCard(Modifier.size(width = 180.dp, height = 100.dp)) {
+    ElevatedCard(Modifier.size(width = 480.dp, height = 200.dp)) {
         Box(Modifier.fillMaxSize()) {
             Text("Card content", Modifier.align(Alignment.Center))
         }

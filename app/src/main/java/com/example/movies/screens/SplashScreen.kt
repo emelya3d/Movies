@@ -28,7 +28,8 @@ import kotlinx.coroutines.delay
 @Composable
 
 fun SplashScreen(navController: NavController) {
-    // Анимация
+                                                                 // Анимация
+
     var startAnimate by remember {
         mutableStateOf(false)
     }
@@ -42,11 +43,10 @@ fun SplashScreen(navController: NavController) {
         delay(2000)
 
         navController.navigate(Screens.Main.route)
-
     }
     Splash(alfa = alphaAnimation.value)
 }
-
+                                                                  // Экран
 @Composable
 fun Splash(alfa: Float) {
     Box(
