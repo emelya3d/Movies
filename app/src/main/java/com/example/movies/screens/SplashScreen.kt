@@ -74,3 +74,4 @@ fun PrevSplash() {
         Splash(1f)
     }
 }
+//6.Splash сделали анимацию

@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-kapt")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -77,7 +79,7 @@ dependencies {
     implementation (libs.androidx.lifecycle.livedata.ktx)
     implementation (libs.androidx.activity.ktx)
     implementation( libs.androidx.runtime.livedata)
-// Retrofit
+// Retrofit-упрощает взаимодействие с REST API сайта
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
     implementation (libs.okhttp)
@@ -85,8 +87,9 @@ dependencies {
     implementation (libs.hilt.android)
     implementation (libs.androidx.hilt.navigation.compose)
     kapt (libs.hilt.compiler)
-
-
+//classpath "com.google.dagger:hilt-android-gradle-plugin:2.40.5"
+// не установлено в build.gradle. movies
+// id("kotlin-kapt") вверху не убрал чтобы без него. надо смотреть
 
 
 

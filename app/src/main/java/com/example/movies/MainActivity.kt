@@ -13,7 +13,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.movies.navigation.SetupNavHost
 import com.example.movies.ui.theme.MoviesTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,3 +29,4 @@ class MainActivity : ComponentActivity() {
 }
 //1. Почистили и добавили val navController = rememberNavController()
 //   Вызываем SetupNavHost(navController=navController) может проще сразу NavHost()????
+// 7.добавили @AndroidEntryPoint  -hilt
