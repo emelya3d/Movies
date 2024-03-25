@@ -12,11 +12,13 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)//SingletonComponent::class объект будет создан в одном экземпляре
 object AppModule {
-    const val BASE_URL="http://api/tvmaze.com"
+    @Provides
+    fun baseUrl() = "http://api/tvmaze.com"
+
     @Provides
     @Singleton
-    fun provideRetrofit():ApiService = Retrofit.Builder()
-        .baseUrl(BASE_URL)
+    fun provideRetrofit(baseUrl: String): ApiService = Retrofit.Builder()
+        .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create()) // Gson конвертер
         .build()
         .create(ApiService::class.java)
