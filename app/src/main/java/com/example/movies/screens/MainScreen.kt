@@ -7,9 +7,13 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults.cardElevation
+import androidx.compose.material3.CardElevation
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -28,7 +32,7 @@ import com.example.movies.data.models.Movies
 @Composable
 fun MainScreen(navController: NavController, viewModel: MainViewModel) {
     val allMovies = viewModel.allMovies.observeAsState(listOf()).value
-    allMovies.forEach { Log.d("checkData", "ID: ${it.id} name: ${it.name}") }
+
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -47,6 +51,18 @@ fun MainScreen(navController: NavController, viewModel: MainViewModel) {
 
 @Composable
 fun MovieItem(item: Movies) {
+    Card(
+        elevation = cardElevation(4.dp),    //elevation =4.dp не катит
+        modifier = Modifier
+            .padding(top = 8.dp),
+
+        ) {
+
+    }
+
+}
+/*@Composable
+fun MovieItem(item: Movies) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -59,7 +75,7 @@ fun MovieItem(item: Movies) {
         Text(text = item.name)
 
     }
-}
+}*/
 /*@Composable
 fun ElevatedCard() {
 
