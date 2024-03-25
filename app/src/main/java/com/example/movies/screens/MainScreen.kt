@@ -33,27 +33,32 @@ fun MainScreen(navController: NavController, viewModel: MainViewModel) {
         modifier = Modifier
             .fillMaxSize()
     ) {
-       LazyColumn( modifier= Modifier,
-
-        contentPadding= PaddingValues(10.dp)
-       ) {
-           items(allMovies){item ->
-               MovieItem(item = item)
-           }
-       }
+        LazyColumn(
+            modifier = Modifier,
+            contentPadding = PaddingValues(10.dp)
+        ) {
+            items(allMovies) { item ->
+                MovieItem(item = item)
+            }
+        }
 
     }
 }
-@Composable
-fun MovieItem(item : Movies){
-Row( modifier = Modifier
-    .fillMaxWidth()) {
-    Text(text = item.id.toString(),
-        modifier= Modifier,
-        color= Color.Red)
-    Text(text = item.name)
 
-}
+@Composable
+fun MovieItem(item: Movies) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+    ) {
+        Text(
+            text = item.id.toString(),
+            modifier = Modifier,
+            color = Color.Red
+        )
+        Text(text = item.name)
+
+    }
 }
 /*@Composable
 fun ElevatedCard() {
