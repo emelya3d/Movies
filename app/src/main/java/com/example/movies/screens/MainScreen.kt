@@ -1,7 +1,9 @@
 package com.example.movies.screens
 
 import android.util.Log
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,6 +18,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -30,8 +33,11 @@ fun MainScreen(navController: NavController, viewModel: MainViewModel) {
         modifier = Modifier
             .fillMaxSize()
     ) {
-       LazyColumn {
-           items(allMovies.take(10)){item ->
+       LazyColumn( modifier= Modifier,
+
+        contentPadding= PaddingValues(10.dp)
+       ) {
+           items(allMovies){item ->
                MovieItem(item = item)
            }
        }
@@ -42,7 +48,9 @@ fun MainScreen(navController: NavController, viewModel: MainViewModel) {
 fun MovieItem(item : Movies){
 Row( modifier = Modifier
     .fillMaxWidth()) {
-    Text(text = item.id.toString())
+    Text(text = item.id.toString(),
+        modifier= Modifier,
+        color= Color.Red)
     Text(text = item.name)
 
 }
