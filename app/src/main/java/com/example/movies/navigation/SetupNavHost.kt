@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.movies.MainViewModel
 import com.example.movies.screens.MainScreen
 import com.example.movies.screens.SplashScreen
 import com.example.movies.ui.theme.utils.Constants
@@ -16,18 +17,21 @@ sealed class Screens(val route: String) {       // может в отдельн�
 }
 
 @Composable
-fun SetupNavHost(navController: NavHostController) { //может проще сразу просто NavHost?
+fun SetupNavHost(
+    navController: NavHostController,
+    viewModel: MainViewModel
+) { //может проще сразу просто NavHost?
 
     NavHost(
         navController = navController,
         startDestination = Screens.Splash.route
     ) {
         composable(route = Screens.Splash.route) {
-            SplashScreen(navController = navController)
+            SplashScreen(navController = navController, viewModel = viewModel)
 
         }
         composable(route = Screens.Main.route) {
-            MainScreen(navController = navController)
+            MainScreen(navController = navController, viewModel = viewModel)
         }
         composable(route = Screens.Details.route) {
 

@@ -21,14 +21,15 @@ import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.movies.MainViewModel
 import com.example.movies.navigation.Screens
 import com.example.movies.ui.theme.MoviesTheme
 import kotlinx.coroutines.delay
 
 @Composable
 
-fun SplashScreen(navController: NavController) {
-                                                                 // Анимация
+fun SplashScreen(navController: NavController, viewModel: MainViewModel) {
+                                                                         // Анимация
 
     var startAnimate by remember {
         mutableStateOf(false)
@@ -40,13 +41,14 @@ fun SplashScreen(navController: NavController) {
     )
     LaunchedEffect(key1 = true) {
         startAnimate = true
+        viewModel.getAllMovies()
         delay(2000)
 
         navController.navigate(Screens.Main.route)
     }
     Splash(alfa = alphaAnimation.value)
 }
-                                                                  // Экран
+                                                                          // Экран
 @Composable
 fun Splash(alfa: Float) {
     Box(

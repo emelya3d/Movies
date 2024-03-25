@@ -8,25 +8,23 @@ import androidx.lifecycle.viewModelScope
 import com.example.movies.data.models.Movies
 import com.example.movies.data.network.ApiRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
-
 @HiltViewModel
-
-class MainViewModel @Inject constructor(private val repository: ApiRepository):ViewModel() {
-    private  val _allMovies = MutableLiveData<List<Movies>>()
+class MainViewModel @Inject constructor(private val repository: ApiRepository) : ViewModel() {
+    private val _allMovies = MutableLiveData<List<Movies>>()
     val allMovies: LiveData<List<Movies>>
         get() = _allMovies
-    fun getAllMovies(){
-        viewModelScope.launch { repository.getAllMovies().let {
-          if(it.isSuccessful){
-              _allMovies.postValue(it.body())
-          }else{
-              Log.d("checkData", "Failed to load movies: ${it.errorBody()}")
-          }
-        }
+
+    fun getAllMovies() {
+        viewModelScope.launch {
+            repository.getAllMovies().let {
+                if (it.isSuccessful) {
+                    _allMovies.postValue(it.body())
+                } else {
+                    Log.d("checkData", "Failed to load movies: ${it.errorBody()}")
+                }
+            }
         }
     }
 }

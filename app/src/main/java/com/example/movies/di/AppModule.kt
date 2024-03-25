@@ -13,7 +13,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)//SingletonComponent::class объект будет создан в одном экземпляре
 object AppModule {
     @Provides
-    fun baseUrl() = "http://api/tvmaze.com"
+    fun baseUrl() = "http://api.tvmaze.com/"
 
     @Provides
     @Singleton
