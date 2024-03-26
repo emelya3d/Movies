@@ -85,26 +85,26 @@ fun MovieItem(item: Movies) {
                 Text(
                     text = item.name,
                     fontSize = 24.sp,
-                    fontWeight = FontWeight.W400
+                    fontWeight = FontWeight.Bold
                 )
                 Row {
                     Text(
                         text = "Rating :",
-                        fontWeight = FontWeight.W400
+                        fontWeight = FontWeight.Bold
                     )
                     Text(text = item.rating.average.toString())
                 }
                 Row {
                     Text(
                         text = "Genre :",
-                        fontWeight = FontWeight.W400
+                        fontWeight = FontWeight.Bold
                     )
                     item.genres.take(2).forEach{ Text(text = "$it")} // берем 2 иначе жанры полезут на другую строку
                 }
                 Row {
                     Text(
                         text = "Premiered :",
-                        fontWeight = FontWeight.W400
+                        fontWeight = FontWeight.Bold
                     )
                     Text(text = item.premiered)
                 }
