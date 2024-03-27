@@ -3,7 +3,6 @@ package com.example.movies
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -24,11 +23,18 @@ class MainActivity : ComponentActivity() {
             MoviesTheme {
                 val navController = rememberNavController()
                 val viewModel = hiltViewModel<MainViewModel>()
-                SetupNavHost(navController = navController,viewModel=viewModel)
+                SetupNavHost(
+                    navController = navController,
+                    viewModel = viewModel
+                )
             }
+            // пример всплывающего сообщения
+           // val toast = Toast.makeText(applicationContext, "Loading.....", Toast.LENGTH_SHORT).show()
         }
     }
 }
+
+
 //1. Почистили и добавили val navController = rememberNavController()
 //   Вызываем SetupNavHost(navController=navController) может проще сразу NavHost()????
 // 7.добавили @AndroidEntryPoint  -hilt

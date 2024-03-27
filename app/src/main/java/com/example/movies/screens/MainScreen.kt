@@ -1,10 +1,8 @@
 package com.example.movies.screens
 
-import android.util.Log
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -15,30 +13,20 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardDefaults.cardElevation
-import androidx.compose.material3.CardElevation
-import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
-import coil.compose.rememberImagePainter
 import com.example.movies.MainViewModel
 import com.example.movies.data.models.Movies
+import com.example.movies.navigation.Screens
 
 @Composable
 fun MainScreen(navController: NavController, viewModel: MainViewModel) {
@@ -47,14 +35,13 @@ fun MainScreen(navController: NavController, viewModel: MainViewModel) {
     Surface(//color= MaterialTheme.colorScheme.error,
         modifier = Modifier
             .fillMaxSize()
-
     ) {
         LazyColumn(
             modifier = Modifier,
             contentPadding = PaddingValues(10.dp)
         ) {
             items(allMovies) { item ->
-                MovieItem(item = item)
+                MovieItem(item = item, navController)
             }
         }
 
@@ -62,19 +49,22 @@ fun MainScreen(navController: NavController, viewModel: MainViewModel) {
 }
 
 @Composable
-fun MovieItem(item: Movies) {
+fun MovieItem(item: Movies, navController: NavController) {
     Card(
         // colors = CardDefaults.cardColors(Color.Unspecified),
         elevation = cardElevation(4.dp),    //elevation =4.dp не катит
         modifier = Modifier
             .padding(top = 8.dp)
-            .clickable { }
+            .clickable {
+                navController.navigate(Screens.Details.route + "/${item.id}")
+
+            }
 
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 10.dp)
+                .padding(vertical = 20.dp)
         ) {
             Image(
                 painter = rememberAsyncImagePainter(item.image.medium),
@@ -97,9 +87,14 @@ fun MovieItem(item: Movies) {
                 Row {
                     Text(
                         text = "Genre :",
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
                     )
-                    item.genres.take(2).forEach{ Text(text = "$it")} // берем 2 иначе жанры полезут на другую строку
+                    item.genres.take(2)
+                        //.forEach { Text(text = it) } // берем 2 иначе жанры полезут на другую строку
+                        .map {
+                            Text(text = it)
+                        }          // можно через .map
+
                 }
                 Row {
                     Text(
@@ -107,6 +102,7 @@ fun MovieItem(item: Movies) {
                         fontWeight = FontWeight.Bold
                     )
                     Text(text = item.premiered)
+
                 }
 
             }
@@ -115,6 +111,7 @@ fun MovieItem(item: Movies) {
     }
 
 }
+
 /*@Composable
 fun MovieItem(item: Movies) {
     Row(
